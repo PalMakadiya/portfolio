@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './About.module.css';
 import { GroupedSkills } from '../types';
 import { Server, Database, Hammer, Cpu } from 'lucide-react';
-import CountUp from './ui/CountUp';
 
 interface AboutProps {
   skills: GroupedSkills;
@@ -84,6 +83,27 @@ const About: React.FC<AboutProps> = ({ skills, loading }) => {
     }
   };
 
+  const getTechColor = (tech: string) => {
+    switch (tech.toLowerCase()) {
+      case 'react.js':
+        return { solid: '#61DAFB', glow: 'rgba(97, 218, 251, 0.08)' };
+      case 'node.js':
+        return { solid: '#339933', glow: 'rgba(51, 153, 51, 0.08)' };
+      case 'express.js':
+        return { solid: '#ffffff', glow: 'rgba(255, 255, 255, 0.08)' };
+      case 'postgresql':
+        return { solid: '#336791', glow: 'rgba(51, 103, 145, 0.08)' };
+      case 'prisma orm':
+        return { solid: '#5A67D8', glow: 'rgba(90, 103, 216, 0.08)' };
+      case 'javascript':
+        return { solid: '#F7DF1E', glow: 'rgba(247, 223, 30, 0.08)' };
+      case 'html & css':
+        return { solid: '#E34F26', glow: 'rgba(227, 79, 38, 0.08)' };
+      default:
+        return { solid: 'hsl(var(--accent-primary))', glow: 'hsla(var(--accent-primary), 0.08)' };
+    }
+  };
+
   return (
     <section id="about" className="section">
       <div className="container">
@@ -102,27 +122,22 @@ const About: React.FC<AboutProps> = ({ skills, loading }) => {
             <div className={styles.techStackSection}>
               <h4 className={styles.techStackTitle}>Core Tech Stack</h4>
               <div className={styles.techStackList}>
-                {['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'JavaScript', 'HTML & CSS'].map((tech) => (
-                  <span key={tech} className={styles.techBadge}>
-                    {getTechIcon(tech)}
-                    <span>{tech}</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.highlights}>
-              <div className={`${styles.highlightCard} glass-panel`}>
-                <span className={styles.highlightNum}>
-                  <CountUp end={3} suffix="+" />
-                </span>
-                <span className={styles.highlightLabel}>Years Experience</span>
-              </div>
-              <div className={`${styles.highlightCard} glass-panel`}>
-                <span className={styles.highlightNum}>
-                  <CountUp end={15} suffix="+" />
-                </span>
-                <span className={styles.highlightLabel}>Projects Completed</span>
+                {['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'JavaScript', 'HTML & CSS'].map((tech) => {
+                  const colors = getTechColor(tech);
+                  return (
+                    <span 
+                      key={tech} 
+                      className={styles.techBadge}
+                      style={{ 
+                        '--tech-color-solid': colors.solid, 
+                        '--tech-color-glow': colors.glow 
+                      } as React.CSSProperties}
+                    >
+                      {getTechIcon(tech)}
+                      <span>{tech}</span>
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>
