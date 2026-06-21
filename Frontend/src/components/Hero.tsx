@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Hero.module.css';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import CountUp from './ui/CountUp';
 
 const Hero: React.FC = () => {
   const handleCtaClick = (id: string) => {
@@ -34,28 +33,6 @@ const Hero: React.FC = () => {
           <p className={styles.description}>
             Enthusiastic Full Stack Web Developer skilled in building responsive, efficient, and production-ready web applications. Experienced in developing scalable backend architectures, RESTful APIs, and optimized database management with clean, scalable code.
           </p>
-
-          {/* Trust Bar (Stats) */}
-          <div className={styles.trustBar}>
-            <div className={styles.trustItem}>
-              <span className={styles.trustNumber}>
-                <CountUp end={6} />
-              </span>
-              <span className={styles.trustLabel}>Months Experience</span>
-            </div>
-            <div className={styles.trustItem}>
-              <span className={styles.trustNumber}>
-                <CountUp end={2} suffix="+" />
-              </span>
-              <span className={styles.trustLabel}>Projects Delivered</span>
-            </div>
-            <div className={styles.trustItem}>
-              <span className={styles.trustNumber}>
-                <CountUp end={10} suffix="+" />
-              </span>
-              <span className={styles.trustLabel}>Technologies</span>
-            </div>
-          </div>
 
           <div className={styles.ctaGroup}>
             <button onClick={() => handleCtaClick('projects')} className="btn btn-primary">
