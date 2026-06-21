@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.bioContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bioText {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
