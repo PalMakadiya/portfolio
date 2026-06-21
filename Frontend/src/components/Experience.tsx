@@ -8,6 +8,7 @@ interface ExperienceProps {
   loading: boolean;
 }
 
+
 const Experience: React.FC<ExperienceProps> = ({ experiences, loading }) => {
   return (
     <section id="experience" className="section">
