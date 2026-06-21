@@ -30,6 +30,10 @@
   scroll-behavior: smooth;
 }
 
+html {
+  font-size: 18px;
+}
+
 body {
   background-color: hsl(var(--bg-primary));
   color: hsl(var(--text-primary));
