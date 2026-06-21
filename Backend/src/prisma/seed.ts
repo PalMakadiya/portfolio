@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
@@ -26,10 +26,16 @@ async function main() {
     { name: 'TypeScript', category: 'Frontend', proficiency: 85, icon: 'TypeScriptIcon', order: 2 },
     { name: 'HTML5/CSS3', category: 'Frontend', proficiency: 95, icon: 'HtmlIcon', order: 3 },
     { name: 'Next.js', category: 'Frontend', proficiency: 80, icon: 'NextIcon', order: 4 },
+    { name: 'Tailwind CSS', category: 'Frontend', proficiency: 90, icon: 'TailwindIcon', order: 5 },
+    { name: 'Zustand / Redux', category: 'Frontend', proficiency: 82, icon: 'ReduxIcon', order: 6 },
+    { name: 'TanStack Query', category: 'Frontend', proficiency: 85, icon: 'QueryIcon', order: 7 },
     // Backend
     { name: 'Node.js', category: 'Backend', proficiency: 88, icon: 'NodeIcon', order: 1 },
     { name: 'Express.js', category: 'Backend', proficiency: 90, icon: 'ExpressIcon', order: 2 },
     { name: 'NestJS', category: 'Backend', proficiency: 70, icon: 'NestIcon', order: 3 },
+    { name: 'RESTful APIs', category: 'Backend', proficiency: 95, icon: 'RestIcon', order: 4 },
+    { name: 'GraphQL', category: 'Backend', proficiency: 78, icon: 'GraphqlIcon', order: 5 },
+    { name: 'WebSockets (Socket.io)', category: 'Backend', proficiency: 80, icon: 'SocketIcon', order: 6 },
     // Database
     { name: 'PostgreSQL', category: 'Database', proficiency: 85, icon: 'PostgresIcon', order: 1 },
     { name: 'MongoDB', category: 'Database', proficiency: 80, icon: 'MongoIcon', order: 2 },
@@ -38,6 +44,8 @@ async function main() {
     { name: 'Git & GitHub', category: 'Tools', proficiency: 90, icon: 'GitIcon', order: 1 },
     { name: 'Docker', category: 'Tools', proficiency: 75, icon: 'DockerIcon', order: 2 },
     { name: 'AWS', category: 'Tools', proficiency: 70, icon: 'AwsIcon', order: 3 },
+    { name: 'CI/CD (GitHub Actions)', category: 'Tools', proficiency: 80, icon: 'CicdIcon', order: 4 },
+    { name: 'Vercel / Netlify / Render', category: 'Tools', proficiency: 88, icon: 'HostingIcon', order: 5 },
   ];
 
   for (const skill of skills) {

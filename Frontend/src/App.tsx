@@ -6,19 +6,17 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { Project, Experience as ExperienceType, GroupedSkills } from './types';
+import { Project, Experience as ExperienceType } from './types';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
 const App: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [experiences, setExperiences] = useState<ExperienceType[]>([]);
-  const [skills, setSkills] = useState<GroupedSkills>({});
   
   const [loading, setLoading] = useState({
     projects: true,
     experiences: true,
-    skills: true,
   });
 
   useEffect(() => {
@@ -50,23 +48,8 @@ const App: React.FC = () => {
       }
     };
 
-    // Fetch Skills
-    const fetchSkills = async () => {
-      try {
-        const res = await fetch(`${API_BASE_URL}/skills`);
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        setSkills(data);
-      } catch (err) {
-        console.error('Failed to fetch skills');
-      } finally {
-        setLoading((prev) => ({ ...prev, skills: false }));
-      }
-    };
-
     fetchProjects();
     fetchExperiences();
-    fetchSkills();
   }, []);
 
   return (
@@ -81,7 +64,7 @@ const App: React.FC = () => {
       {/* Main sections */}
       <main>
         <Hero />
-        <About skills={skills} loading={loading.skills} />
+        <About />
         <Projects projects={projects} loading={loading.projects} />
         <Experience experiences={experiences} loading={loading.experiences} />
         <Contact apiBaseUrl={API_BASE_URL} />

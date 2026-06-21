@@ -1,27 +1,8 @@
 import React from 'react';
 import styles from './About.module.css';
-import { GroupedSkills } from '../types';
-import { Server, Database, Hammer, Cpu } from 'lucide-react';
+import Terminal from './ui/Terminal';
 
-interface AboutProps {
-  skills: GroupedSkills;
-  loading: boolean;
-}
-
-const About: React.FC<AboutProps> = ({ skills, loading }) => {
-  const getCategoryIcon = (category: string) => {
-    switch (category.toLowerCase()) {
-      case 'frontend':
-        return <Cpu className={styles.categoryIcon} size={20} />;
-      case 'backend':
-        return <Server className={styles.categoryIcon} size={20} />;
-      case 'database':
-        return <Database className={styles.categoryIcon} size={20} />;
-      default:
-        return <Hammer className={styles.categoryIcon} size={20} />;
-    }
-  };
-
+const About: React.FC = () => {
   const getTechIcon = (tech: string) => {
     switch (tech.toLowerCase()) {
       case 'react.js':
@@ -142,52 +123,8 @@ const About: React.FC<AboutProps> = ({ skills, loading }) => {
             </div>
           </div>
 
-          {/* Skills block */}
-          <div className={styles.skillsContainer}>
-            <h3 className={styles.skillsTitle}>Technical Expertise</h3>
-
-            {loading ? (
-              <div className={styles.skeletonContainer}>
-                {[1, 2, 3].map((n) => (
-                  <div key={n} className={styles.skeletonBlock}>
-                    <div className={styles.skeletonHeader}></div>
-                    <div className={styles.skeletonList}>
-                      <div className={styles.skeletonTag}></div>
-                      <div className={styles.skeletonTag}></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : Object.keys(skills).length === 0 ? (
-              <p>No skills data loaded.</p>
-            ) : (
-              <div className={styles.skillsGrid}>
-                {Object.entries(skills).map(([category, skillList]) => (
-                  <div key={category} className={`${styles.skillCategoryCard} glass-panel`}>
-                    <div className={styles.categoryHeader}>
-                      {getCategoryIcon(category)}
-                      <h4>{category}</h4>
-                    </div>
-                    <div className={styles.skillList}>
-                      {skillList.map((skill) => (
-                        <div key={skill.id} className={styles.skillItem}>
-                          <div className={styles.skillMeta}>
-                            <span className={styles.skillName}>{skill.name}</span>
-                            <span className={styles.skillPercent}>{skill.proficiency}%</span>
-                          </div>
-                          <div className={styles.progressBarBg}>
-                            <div 
-                              className={styles.progressBarFill} 
-                              style={{ width: `${skill.proficiency}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+          <div className={styles.terminalContainer}>
+            <Terminal />
           </div>
         </div>
       </div>

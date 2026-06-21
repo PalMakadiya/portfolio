@@ -1,0 +1,122 @@
+.terminalWindow {
+  width: 100%;
+  max-width: 500px;
+  background: hsla(240, 5%, 4%, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--border-color) / 0.55);
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  display: flex;
+  flex-direction: column;
+}
+
+.terminalHeader {
+  height: 40px;
+  background: hsla(240, 5%, 8%, 0.9);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  position: relative;
+  border-bottom: 1px solid hsl(var(--border-color) / 0.45);
+}
+
+.windowControls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controlDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.close {
+  background: #ff5f56;
+}
+
+.minimize {
+  background: #ffbd2e;
+}
+
+.maximize {
+  background: #27c93f;
+}
+
+.terminalTitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  color: hsl(var(--text-muted));
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.terminalTabs {
+  display: flex;
+  background: hsla(240, 5%, 6%, 0.7);
+  border-bottom: 1px solid hsl(var(--border-color) / 0.45);
+}
+
+.tabButton {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-right: 1px solid hsl(var(--border-color) / 0.3);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: hsl(var(--text-muted));
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tabButton:last-child {
+  border-right: none;
+}
+
+.tabButton:hover {
+  color: hsl(var(--text-primary));
+  background: hsla(240, 5%, 8%, 0.4);
+}
+
+.activeTab {
+  color: hsl(var(--accent-secondary));
+  background: hsla(240, 5%, 4%, 0.95);
+  font-weight: 600;
+  border-bottom: 1.5px solid hsl(var(--accent-secondary));
+}
+
+.terminalScreen {
+  padding: 1.5rem;
+  min-height: 220px;
+  background: hsla(240, 5%, 2%, 0.45);
+  display: flex;
+  flex-direction: column;
+}
+
+.terminalContent {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: hsl(var(--text-secondary));
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.blinkingCursor {
+  color: hsl(var(--accent-primary));
+  font-weight: bold;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { color: transparent }
+  50% { color: hsl(var(--accent-primary)) }
+}

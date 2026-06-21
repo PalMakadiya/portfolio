@@ -1,5 +1,5 @@
 import prisma from '../config/prisma';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { signToken } from '../utils/jwt';
 import { JWTPayload, UserSession } from '../types/auth.types';
 
