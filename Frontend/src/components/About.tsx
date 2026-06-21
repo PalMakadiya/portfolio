@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './About.module.css';
 import { GroupedSkills } from '../types';
 import { Server, Database, Hammer, Cpu } from 'lucide-react';
+import CountUp from './ui/CountUp';
 
 interface AboutProps {
   skills: GroupedSkills;
@@ -38,11 +39,15 @@ const About: React.FC<AboutProps> = ({ skills, loading }) => {
             </p>
             <div className={styles.highlights}>
               <div className={`${styles.highlightCard} glass-panel`}>
-                <span className={styles.highlightNum}>3+</span>
+                <span className={styles.highlightNum}>
+                  <CountUp end={3} suffix="+" />
+                </span>
                 <span className={styles.highlightLabel}>Years Experience</span>
               </div>
               <div className={`${styles.highlightCard} glass-panel`}>
-                <span className={styles.highlightNum}>15+</span>
+                <span className={styles.highlightNum}>
+                  <CountUp end={15} suffix="+" />
+                </span>
                 <span className={styles.highlightLabel}>Projects Completed</span>
               </div>
             </div>

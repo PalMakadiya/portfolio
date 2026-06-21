@@ -7,6 +7,36 @@ const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
 
+  const logoText = "pal.makadiya";
+  const [logoSubIndex, setLogoSubIndex] = useState(0);
+  const [logoReverse, setLogoReverse] = useState(false);
+  const [logoBlink, setLogoBlink] = useState(true);
+
+  // Logo typewriter effect
+  useEffect(() => {
+    if (logoSubIndex === logoText.length + 1 && !logoReverse) {
+      const timeout = setTimeout(() => setLogoReverse(true), 2500);
+      return () => clearTimeout(timeout);
+    }
+
+    if (logoSubIndex === 0 && logoReverse) {
+      setLogoReverse(false);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setLogoSubIndex((prev) => prev + (logoReverse ? -1 : 1));
+    }, logoReverse ? 50 : 120);
+
+    return () => clearTimeout(timeout);
+  }, [logoSubIndex, logoReverse]);
+
+  // Logo cursor blinking
+  useEffect(() => {
+    const timeout = setTimeout(() => setLogoBlink((prev) => !prev), 500);
+    return () => clearTimeout(timeout);
+  }, [logoBlink]);
+
   useEffect(() => {
     const handleScroll = () => {
       // Background blur scroll effect
@@ -62,7 +92,10 @@ const Navbar: React.FC = () => {
       <div className={styles.navContainer}>
         <a href="#home" className={styles.logo} onClick={(e) => handleNavClick(e, 'home')}>
           <Terminal className={styles.logoIcon} size={22} />
-          <span>DevPortfolio<span className={styles.dot}>.</span></span>
+          <span className={styles.typingField}>
+            {logoText.substring(0, logoSubIndex)}
+            <span className={`${styles.cursor} ${logoBlink ? styles.visible : ''}`}>_</span>
+          </span>
         </a>
 
         {/* Desktop Navigation Links */}

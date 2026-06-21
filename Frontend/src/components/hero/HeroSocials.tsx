@@ -5,13 +5,13 @@ import styles from './Hero.module.css';
 const HeroSocials: React.FC = () => {
   return (
     <div className={styles.socials}>
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
+      <a href="https://github.com/PalMakadiya/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
         <Github size={20} />
       </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/palmakadiya-421331340" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
         <Linkedin size={20} />
       </a>
-      <a href="mailto:pal@example.com" className={styles.socialIcon} aria-label="Email">
+      <a href="mailto:palmakadiya2005@gmail.com" className={styles.socialIcon} aria-label="Email">
         <Mail size={20} />
       </a>
     </div>

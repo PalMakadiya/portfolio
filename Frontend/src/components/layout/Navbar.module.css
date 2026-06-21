@@ -8,18 +8,21 @@
   align-items: center;
   z-index: 1000;
   transition: var(--transition-smooth);
-}
-
-.scrolled {
-  height: 70px;
   background: hsl(var(--glass-bg));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid hsl(var(--glass-border));
 }
 
+.scrolled {
+  height: 70px;
+  background: hsl(var(--bg-secondary) / 0.85);
+  border-bottom: 1px solid hsl(var(--border-color));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
 .navContainer {
-  width: 1200px;
+  width: 1440px;
   max-width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
@@ -45,6 +48,24 @@
 
 .dot {
   color: hsl(var(--accent-secondary));
+}
+
+.typingField {
+  font-family: 'Space Mono', 'Fira Code', Consolas, 'Courier New', monospace;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cursor {
+  color: hsl(var(--accent-secondary));
+  opacity: 0;
+  margin-left: 2px;
+  transition: opacity 0.1s ease;
+}
+
+.cursor.visible {
+  opacity: 1;
 }
 
 .desktopNav {
@@ -97,14 +118,16 @@
 .mobileNav {
   display: none;
   position: absolute;
-  top: 60px;
+  top: 65px;
   right: 2rem;
   width: 200px;
-  background: hsl(var(--bg-secondary));
-  border: 1px solid hsl(var(--border-color));
+  background: hsl(var(--glass-bg));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--glass-border));
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   animation: slideDown 0.25s ease-out forwards;
 }
 

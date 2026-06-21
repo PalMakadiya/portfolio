@@ -1,39 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import CountUp from './ui/CountUp';
 
 const Hero: React.FC = () => {
-  const words = ['Full Stack Developer', 'React Specialist', 'Node.js Expert', 'Problem Solver'];
+  const words = ['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'JavaScript', 'HTML & CSS'];
   const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [reverse, setReverse] = useState(false);
-  const [blink, setBlink] = useState(true);
 
-  // Typewriter effect
+
+  // Word rotation interval
   useEffect(() => {
-    if (subIndex === words[index].length + 1 && !reverse) {
-      const timeout = setTimeout(() => setReverse(true), 2000);
-      return () => clearTimeout(timeout);
-    }
-
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
+    const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, reverse ? 75 : 150);
-
-    return () => clearTimeout(timeout);
-  }, [subIndex, reverse, index]);
-
-  // Cursor blinking
-  useEffect(() => {
-    const timeout2 = setTimeout(() => setBlink((prev) => !prev), 500);
-    return () => clearTimeout(timeout2);
-  }, [blink]);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [words.length]);
 
   const handleCtaClick = (id: string) => {
     const target = document.getElementById(id);
@@ -48,46 +29,75 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className={styles.heroSection}>
       <div className={styles.heroContainer}>
-        <div className={styles.introBadge}>
-          <span className={styles.pulse}></span>
-          Available for new opportunities
+        <div className={styles.heroContent}>
+          <div className={styles.introBadge}>
+            <span className={styles.pulse}></span>
+            Available for new opportunities
+          </div>
+
+          <h1 className={styles.title}>
+            Hi, I am <span className={styles.gradientText}>Pal Makadiya</span>
+          </h1>
+          
+          <h2 className={styles.subtitle}>
+            I build with{' '}
+            <span key={index} className={styles.rotatingWord}>
+              {words[index]}
+            </span>
+          </h2>
+
+          <p className={styles.description}>
+            Enthusiastic Full Stack Web Developer skilled in building responsive, efficient, and production-ready web applications. Experienced in developing scalable backend architectures, RESTful APIs, and optimized database management with clean, scalable code.
+          </p>
+
+          {/* Trust Bar (Stats) */}
+          <div className={styles.trustBar}>
+            <div className={styles.trustItem}>
+              <span className={styles.trustNumber}>
+                <CountUp end={6} />
+              </span>
+              <span className={styles.trustLabel}>Months Experience</span>
+            </div>
+            <div className={styles.trustItem}>
+              <span className={styles.trustNumber}>
+                <CountUp end={2} suffix="+" />
+              </span>
+              <span className={styles.trustLabel}>Projects Delivered</span>
+            </div>
+            <div className={styles.trustItem}>
+              <span className={styles.trustNumber}>
+                <CountUp end={10} suffix="+" />
+              </span>
+              <span className={styles.trustLabel}>Technologies</span>
+            </div>
+          </div>
+
+          <div className={styles.ctaGroup}>
+            <button onClick={() => handleCtaClick('projects')} className="btn btn-primary">
+              View Projects <ArrowRight size={18} />
+            </button>
+            <button onClick={() => handleCtaClick('contact')} className="btn btn-secondary">
+              Get In Touch <Mail size={18} />
+            </button>
+          </div>
+
+          <div className={styles.socials}>
+            <a href="https://github.com/PalMakadiya/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
+              <Github size={20} />
+            </a>
+            <a href="https://www.linkedin.com/in/palmakadiya-421331340" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
+              <Linkedin size={20} />
+            </a>
+            <a href="mailto:palmakadiya2005@gmail.com" className={styles.socialIcon} aria-label="Email">
+              <Mail size={20} />
+            </a>
+          </div>
         </div>
 
-        <h1 className={styles.title}>
-          Hi, I am <span className={styles.gradientText}>Pal Makadiya</span>
-        </h1>
-        
-        <h2 className={styles.subtitle}>
-          I build{' '}
-          <span className={styles.typingField}>
-            {words[index].substring(0, subIndex)}
-            <span className={`${styles.cursor} ${blink ? styles.visible : ''}`}>|</span>
-          </span>
-        </h2>
-
-        <p className={styles.description}>
-          A Full Stack Developer specializing in crafting robust, high-performance web applications. I design responsive frontend architectures and clean relational APIs with strict database integration.
-        </p>
-
-        <div className={styles.ctaGroup}>
-          <button onClick={() => handleCtaClick('projects')} className="btn btn-primary">
-            View Projects <ArrowRight size={18} />
-          </button>
-          <button onClick={() => handleCtaClick('contact')} className="btn btn-secondary">
-            Get In Touch <Mail size={18} />
-          </button>
-        </div>
-
-        <div className={styles.socials}>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
-            <Github size={20} />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
-            <Linkedin size={20} />
-          </a>
-          <a href="mailto:pal@example.com" className={styles.socialIcon} aria-label="Email">
-            <Mail size={20} />
-          </a>
+        <div className={styles.heroImageContainer}>
+          <div className={styles.imageWrapper}>
+            <img src="/portfolio_image.jpeg" alt="Pal Makadiya" className={styles.heroImage} />
+          </div>
         </div>
       </div>
     </section>

@@ -1,20 +1,20 @@
 :root {
-  /* HSL Color System */
-  --bg-primary: 220 20% 6%;
-  --bg-secondary: 220 20% 10%;
-  --bg-tertiary: 220 20% 14%;
+  /* HSL Color System - Carbon Charcoal Dark Theme & Violet/Fuchsia Accents */
+  --bg-primary: 240 5% 5%;
+  --bg-secondary: 240 4% 9%;
+  --bg-tertiary: 240 4% 13%;
   
   --text-primary: 0 0% 98%;
-  --text-secondary: 220 10% 70%;
-  --text-muted: 220 10% 45%;
+  --text-secondary: 240 3% 75%;
+  --text-muted: 240 3% 50%;
   
-  --accent-primary: 250 85% 65%;   /* Purple/Indigo */
-  --accent-secondary: 190 90% 50%; /* Cyan/Teal */
-  --accent-glow: 250 85% 65%;
+  --accent-primary: 262 83% 58%;   /* Vibrant Violet */
+  --accent-secondary: 316 70% 50%; /* Vibrant Fuchsia */
+  --accent-glow: 262 83% 58%;
   
-  --border-color: 220 15% 18%;
-  --glass-bg: 220 20% 10% / 0.55;
-  --glass-border: 220 15% 20% / 0.4;
+  --border-color: 240 4% 16%;
+  --glass-bg: 240 5% 9% / 0.65;
+  --glass-border: 240 4% 18% / 0.45;
   
   --transition-smooth: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
   --transition-fast: all 0.2s ease;
@@ -103,7 +103,7 @@ button, input, textarea {
 
 /* Layout Utilities */
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 2rem;
 }

@@ -76,7 +76,7 @@ const Contact: React.FC<ContactProps> = ({ apiBaseUrl }) => {
                 <Mail className={styles.infoIcon} size={20} />
                 <div>
                   <h4>Email Me</h4>
-                  <a href="mailto:pal@example.com" className={styles.infoLink}>pal@example.com</a>
+                  <a href="mailto:palmakadiya2005@gmail.com" className={styles.infoLink}>palmakadiya2005@gmail.com</a>
                 </div>
               </div>
 
