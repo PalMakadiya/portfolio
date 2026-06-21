@@ -23,6 +23,67 @@ const About: React.FC<AboutProps> = ({ skills, loading }) => {
     }
   };
 
+  const getTechIcon = (tech: string) => {
+    switch (tech.toLowerCase()) {
+      case 'react.js':
+        return (
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#61DAFB" strokeWidth="1.5">
+            <circle cx="12" cy="12" r="2" fill="#61DAFB" stroke="none" />
+            <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(0 12 12)" />
+            <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(60 12 12)" />
+            <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(120 12 12)" />
+          </svg>
+        );
+      case 'node.js':
+        return (
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 2L2 7.8v11.6L12 22l10-5.8V7.8L12 2zm8 14.4l-8 4.6-8-4.6V8.8l8-4.6 8 4.6v7.6z" fill="#339933" />
+            <path d="M12 5.5v13l5.5-3.2V8.7L12 5.5z" fill="#66cc33" />
+          </svg>
+        );
+      case 'express.js':
+        return (
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2" />
+            <rect x="2" y="14" width="20" height="8" rx="2" />
+            <line x1="6" y1="6" x2="6.01" y2="6" strokeWidth="3" />
+            <line x1="6" y1="18" x2="6.01" y2="18" strokeWidth="3" />
+          </svg>
+        );
+      case 'postgresql':
+        return (
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#336791" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3" />
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+          </svg>
+        );
+      case 'prisma orm':
+        return (
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 2L2.5 19.5h19L12 2zm-6.5 15.5L12 6l6.5 11.5h-13z" fill="#5A67D8" />
+            <path d="M12 6l5 9H7l5-9z" fill="#4C51BF" />
+          </svg>
+        );
+      case 'javascript':
+        return (
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <rect width="24" height="24" rx="4" fill="#F7DF1E" />
+            <text x="12" y="17" fontFamily="system-ui, -apple-system, sans-serif" fontSize="11" fontWeight="900" fill="#000000" textAnchor="middle">JS</text>
+          </svg>
+        );
+      case 'html & css':
+        return (
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#E34F26" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <section id="about" className="section">
       <div className="container">
@@ -42,7 +103,10 @@ const About: React.FC<AboutProps> = ({ skills, loading }) => {
               <h4 className={styles.techStackTitle}>Core Tech Stack</h4>
               <div className={styles.techStackList}>
                 {['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'JavaScript', 'HTML & CSS'].map((tech) => (
-                  <span key={tech} className={styles.techBadge}>{tech}</span>
+                  <span key={tech} className={styles.techBadge}>
+                    {getTechIcon(tech)}
+                    <span>{tech}</span>
+                  </span>
                 ))}
               </div>
             </div>
