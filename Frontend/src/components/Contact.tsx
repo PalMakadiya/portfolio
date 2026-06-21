@@ -84,7 +84,7 @@ const Contact: React.FC<ContactProps> = ({ apiBaseUrl }) => {
                 <Phone className={styles.infoIcon} size={20} />
                 <div>
                   <h4>Call Me</h4>
-                  <span className={styles.infoLink}>+1 (123) 456-7890</span>
+                  <span className={styles.infoLink}>+91 7016762144</span>
                 </div>
               </div>
 
