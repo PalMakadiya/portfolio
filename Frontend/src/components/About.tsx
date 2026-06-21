@@ -37,6 +37,16 @@ const About: React.FC<AboutProps> = ({ skills, loading }) => {
             <p className={styles.bioText}>
               My development philosophy focuses on writing clean, self-documenting code, enforcing structural database schemas, and maintaining high visual polish. I look to build things that are fast, accessible, and robust.
             </p>
+
+            <div className={styles.techStackSection}>
+              <h4 className={styles.techStackTitle}>Core Tech Stack</h4>
+              <div className={styles.techStackList}>
+                {['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'JavaScript', 'HTML & CSS'].map((tech) => (
+                  <span key={tech} className={styles.techBadge}>{tech}</span>
+                ))}
+              </div>
+            </div>
+
             <div className={styles.highlights}>
               <div className={`${styles.highlightCard} glass-panel`}>
                 <span className={styles.highlightNum}>

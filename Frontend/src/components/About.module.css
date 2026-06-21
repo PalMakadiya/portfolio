@@ -154,6 +154,43 @@
   100% { opacity: 0.6; }
 }
 
+.techStackSection {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.techStackTitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--text-muted));
+  margin-bottom: 0.75rem;
+}
+
+.techStackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.techBadge {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  background: hsl(var(--bg-secondary));
+  border: 1px solid hsl(var(--border-color));
+  border-radius: 8px;
+  color: hsl(var(--text-primary));
+  transition: var(--transition-fast);
+}
+
+.techBadge:hover {
+  border-color: hsl(var(--accent-primary));
+  color: hsl(var(--accent-primary));
+  background: hsl(var(--accent-primary) / 0.05);
+  transform: translateY(-1px);
+}
+
 @media (max-width: 992px) {
   .grid {
     grid-template-columns: 1fr;

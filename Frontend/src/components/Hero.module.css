@@ -149,26 +149,6 @@
   font-weight: 600;
   color: hsl(var(--text-secondary));
   margin-bottom: 1.5rem;
-  height: 3.5rem; /* prevent layout shift on typewriter update */
-}
-
-.rotatingWord {
-  display: inline-block;
-  color: hsl(var(--accent-secondary));
-  font-family: var(--font-mono);
-  font-weight: 700;
-  animation: slideFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes slideFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .description {

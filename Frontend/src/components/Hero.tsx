@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './Hero.module.css';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import CountUp from './ui/CountUp';
 
 const Hero: React.FC = () => {
-  const words = ['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'JavaScript', 'HTML & CSS'];
-  const [index, setIndex] = useState(0);
-
-
-  // Word rotation interval
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [words.length]);
-
   const handleCtaClick = (id: string) => {
     const target = document.getElementById(id);
     if (target) {
@@ -40,10 +28,7 @@ const Hero: React.FC = () => {
           </h1>
           
           <h2 className={styles.subtitle}>
-            I build with{' '}
-            <span key={index} className={styles.rotatingWord}>
-              {words[index]}
-            </span>
+            Full Stack Web Developer
           </h2>
 
           <p className={styles.description}>
