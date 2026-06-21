@@ -36,15 +36,17 @@ const Projects: React.FC<ProjectsProps> = ({ projects, loading }) => {
           ))}
         </div>
 
-        {/* Showcase Grid */}
+        {/* Showcase list container */}
         {loading ? (
-          <div className={styles.grid}>
-            {[1, 2, 3].map((n) => (
-              <div key={n} className={`${styles.skeletonCard} glass-panel`}>
-                <div className={styles.skeletonImage}></div>
-                <div className={styles.skeletonContent}>
-                  <div className={styles.skeletonTitle}></div>
-                  <div className={styles.skeletonText}></div>
+          <div className={styles.list}>
+            {[1, 2].map((n) => (
+              <div key={n} className={`${styles.skeletonRow} glass-panel`}>
+                <div className={styles.skeletonLeft}>
+                  <div className={styles.skeletonIcon}></div>
+                  <div className={styles.skeletonTextGroup}>
+                    <div className={styles.skeletonTitle}></div>
+                    <div className={styles.skeletonText}></div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -55,61 +57,56 @@ const Projects: React.FC<ProjectsProps> = ({ projects, loading }) => {
             <p>No projects match the selected criteria.</p>
           </div>
         ) : (
-          <div className={styles.grid}>
+          <div className={styles.list}>
             {filteredProjects.map((project) => (
-              <article key={project.id} className={`${styles.projectCard} glass-panel`}>
-                {project.imageUrl && (
-                  <div className={styles.cardImageContainer}>
-                    <img
-                      src={project.imageUrl}
-                      alt={project.title}
-                      className={styles.cardImage}
-                      loading="lazy"
-                    />
-                    {project.featured && (
-                      <span className={styles.featuredBadge}>Featured</span>
-                    )}
+              <article key={project.id} className={`${styles.projectRow} glass-panel`}>
+                <div className={styles.projectLeft}>
+                  <div className={styles.folderIconContainer}>
+                    <Folder className={styles.folderIcon} size={22} />
                   </div>
-                )}
-                
-                <div className={styles.cardContent}>
-                  <div className={styles.tagsContainer}>
-                    {project.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>
-                        {tag}
-                      </span>
-                    ))}
+                  <div className={styles.projectDetails}>
+                    <div className={styles.projectHeader}>
+                      <h3 className={styles.projectTitle}>{project.title}</h3>
+                      {project.featured && (
+                        <span className={styles.featuredBadge}>Featured</span>
+                      )}
+                    </div>
+                    <p className={styles.projectDescription}>{project.description}</p>
+                    <div className={styles.tagsContainer}>
+                      {project.tags.map((tag) => (
+                        <span key={tag} className={styles.tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                </div>
 
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectDescription}>{project.description}</p>
-
-                  <div className={styles.cardFooter}>
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.actionLink}
-                        aria-label={`View GitHub repository for ${project.title}`}
-                      >
-                        <Github size={20} />
-                        <span>Code</span>
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.actionLink}
-                        aria-label={`Visit live demo of ${project.title}`}
-                      >
-                        <ExternalLink size={20} />
-                        <span>Live Demo</span>
-                      </a>
-                    )}
-                  </div>
+                <div className={styles.projectActions}>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.actionLink}
+                      aria-label={`View GitHub repository for ${project.title}`}
+                    >
+                      <Github size={18} />
+                      <span>Code</span>
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.actionLink}
+                      aria-label={`Visit live demo of ${project.title}`}
+                    >
+                      <ExternalLink size={18} />
+                      <span>Live Demo</span>
+                    </a>
+                  )}
                 </div>
               </article>
             ))}
