@@ -10,16 +10,15 @@ import AcademicBackground from './components/AcademicBackground';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { Project, Experience as ExperienceType } from './types';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { projectsData, experiencesData } from './data/portfolioData';
 
 const App: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [experiences, setExperiences] = useState<ExperienceType[]>([]);
+  const [projects] = useState<Project[]>(projectsData);
+  const [experiences] = useState<ExperienceType[]>(experiencesData);
   
-  const [loading, setLoading] = useState({
-    projects: true,
-    experiences: true,
+  const [loading] = useState({
+    projects: false,
+    experiences: false,
   });
 
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -42,39 +41,6 @@ const App: React.FC = () => {
       behavior: 'smooth'
     });
   };
-
-  useEffect(() => {
-    // Fetch Projects
-    const fetchProjects = async () => {
-      try {
-        const res = await fetch(`${API_BASE_URL}/projects`);
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        setProjects(data);
-      } catch (err) {
-        console.error('Failed to fetch projects');
-      } finally {
-        setLoading((prev) => ({ ...prev, projects: false }));
-      }
-    };
-
-    // Fetch Experiences
-    const fetchExperiences = async () => {
-      try {
-        const res = await fetch(`${API_BASE_URL}/experience`);
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        setExperiences(data);
-      } catch (err) {
-        console.error('Failed to fetch experiences');
-      } finally {
-        setLoading((prev) => ({ ...prev, experiences: false }));
-      }
-    };
-
-    fetchProjects();
-    fetchExperiences();
-  }, []);
 
   return (
     <>
