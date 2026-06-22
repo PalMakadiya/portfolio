@@ -193,7 +193,8 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    padding-top: 60px;
+    padding-top: 80px;
+    padding-bottom: 3.5rem;
   }
   .heroContainer {
     flex-direction: column-reverse;

@@ -64,6 +64,7 @@ const Terminal: React.FC = () => {
           <span className={`${styles.controlDot} ${styles.maximize}`}></span>
         </div>
         <div className={styles.terminalTitle}>pal.makadiya ~ zsh</div>
+        <div className={styles.headerSpacer}></div>
       </div>
 
       {/* Tabs list */}

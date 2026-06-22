@@ -1,7 +1,96 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from './Projects.module.css';
 import { Project } from '../types';
 import { Folder } from 'lucide-react';
+
+interface ProjectRowProps {
+  project: Project;
+  formattedIndex: string;
+  indexColor: string;
+  indexGlow: string;
+  tagBg: string;
+  tagBorder: string;
+}
+
+const ProjectRow: React.FC<ProjectRowProps> = ({
+  project,
+  formattedIndex,
+  indexColor,
+  indexGlow,
+  tagBg,
+  tagBorder
+}) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (rowRef.current) {
+      observer.observe(rowRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <article 
+      ref={rowRef}
+      className={`${styles.projectRow} glass-panel ${isVisible ? styles.visible : ''}`}
+      style={{ 
+        '--hover-color': indexColor,
+        '--hover-glow': indexGlow
+      } as React.CSSProperties}
+    >
+      <div className={styles.projectLeft}>
+        <div className={styles.indexIconColumn}>
+          <div className={styles.folderIconContainer}>
+            <span className={styles.projectEmoji}>
+              {project.title.toLowerCase().includes('car management') ? '🚗' : 
+               project.title.toLowerCase().includes('company') ? '🏢' : '🍽️'}
+            </span>
+          </div>
+          <span className={styles.projectIndex} style={{ color: indexColor }}>
+            {formattedIndex}
+          </span>
+        </div>
+        <div className={styles.projectDetails}>
+          <div className={styles.projectHeader}>
+            <h3 className={styles.projectTitle}>{project.title}</h3>
+          </div>
+          <p className={styles.projectDescription}>{project.description}</p>
+          <div className={styles.tagsContainer}>
+            {project.tags.map((tag) => (
+              <span 
+                key={tag} 
+                className={styles.tag}
+                style={{
+                  '--tag-color': indexColor,
+                  '--tag-bg': tagBg,
+                  '--tag-border': tagBorder
+                } as React.CSSProperties}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+};
 
 interface ProjectsProps {
   projects: Project[];
@@ -50,49 +139,15 @@ const Projects: React.FC<ProjectsProps> = ({ projects, loading }) => {
               const tagBorder = index === 0 ? 'hsla(var(--accent-primary) / 0.25)' : index === 1 ? 'hsla(var(--accent-secondary) / 0.25)' : 'hsla(190 90% 50% / 0.25)';
               
               return (
-                <article 
-                  key={project.id} 
-                  className={`${styles.projectRow} glass-panel`}
-                  style={{ 
-                    '--hover-color': indexColor,
-                    '--hover-glow': indexGlow
-                  } as React.CSSProperties}
-                >
-                  <div className={styles.projectLeft}>
-                    <div className={styles.indexIconColumn}>
-                      <div className={styles.folderIconContainer}>
-                        <span className={styles.projectEmoji}>
-                          {project.title.toLowerCase().includes('car management') ? '🚗' : 
-                           project.title.toLowerCase().includes('company') ? '🏢' : '🍽️'}
-                        </span>
-                      </div>
-                      <span className={styles.projectIndex} style={{ color: indexColor }}>
-                        {formattedIndex}
-                      </span>
-                    </div>
-                    <div className={styles.projectDetails}>
-                      <div className={styles.projectHeader}>
-                        <h3 className={styles.projectTitle}>{project.title}</h3>
-                      </div>
-                      <p className={styles.projectDescription}>{project.description}</p>
-                      <div className={styles.tagsContainer}>
-                        {project.tags.map((tag) => (
-                          <span 
-                            key={tag} 
-                            className={styles.tag}
-                            style={{
-                              '--tag-color': indexColor,
-                              '--tag-bg': tagBg,
-                              '--tag-border': tagBorder
-                            } as React.CSSProperties}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </article>
+                <ProjectRow
+                  key={project.id}
+                  project={project}
+                  formattedIndex={formattedIndex}
+                  indexColor={indexColor}
+                  indexGlow={indexGlow}
+                  tagBg={tagBg}
+                  tagBorder={tagBorder}
+                />
               );
             })}
           </div>

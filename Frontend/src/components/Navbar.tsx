@@ -37,6 +37,18 @@ const Navbar: React.FC = () => {
     return () => clearTimeout(timeout);
   }, [logoBlink]);
 
+  // Disable body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       // Background blur scroll effect
@@ -101,16 +113,23 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Navigation Links */}
         <div className={styles.desktopNav}>
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={`${styles.navLink} ${activeSection === link.id ? styles.active : ''}`}
-              onClick={(e) => handleNavClick(e, link.id)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isContact = link.id === 'contact';
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={
+                  isContact
+                    ? `${styles.navLink} ${styles.contactBtn}`
+                    : `${styles.navLink} ${activeSection === link.id ? styles.active : ''}`
+                }
+                onClick={(e) => handleNavClick(e, link.id)}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </div>
 
         {/* Mobile Nav Button */}
@@ -125,16 +144,23 @@ const Navbar: React.FC = () => {
         {/* Mobile Navigation Dropdown Menu */}
         {isOpen && (
           <div className={styles.mobileNav}>
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className={`${styles.mobileNavLink} ${activeSection === link.id ? styles.active : ''}`}
-                onClick={(e) => handleNavClick(e, link.id)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isContact = link.id === 'contact';
+              return (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className={
+                    isContact
+                      ? `${styles.mobileNavLink} ${styles.mobileContactBtn}`
+                      : `${styles.mobileNavLink} ${activeSection === link.id ? styles.active : ''}`
+                  }
+                  onClick={(e) => handleNavClick(e, link.id)}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
         )}
       </div>

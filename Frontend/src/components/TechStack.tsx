@@ -1,6 +1,59 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from './TechStack.module.css';
 import { Cpu, Brain, Wrench } from 'lucide-react';
+
+interface TechCardProps {
+  item: {
+    name: string;
+    color: string;
+    glow: string;
+    desc: string;
+    icon: React.ReactNode;
+  };
+}
+
+const TechCard: React.FC<TechCardProps> = ({ item }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <div 
+      ref={cardRef}
+      className={`${styles.techCard} glass-panel ${isVisible ? styles.visible : ''}`}
+      style={{ 
+        '--brand-color': item.color,
+        '--brand-glow': item.glow 
+      } as React.CSSProperties}
+    >
+      <div className={styles.cardHeader}>
+        <div className={styles.logoContainer}>
+          {item.icon}
+        </div>
+        <h4 className={styles.techName}>{item.name}</h4>
+      </div>
+      <p className={styles.techDesc}>{item.desc}</p>
+    </div>
+  );
+};
 
 const TechStack: React.FC = () => {
   const categories = [
@@ -248,22 +301,7 @@ const TechStack: React.FC = () => {
             
             <div className={styles.cardsGrid}>
               {cat.items.map((item, itemIdx) => (
-                <div 
-                  key={itemIdx} 
-                  className={`${styles.techCard} glass-panel`}
-                  style={{ 
-                    '--brand-color': item.color,
-                    '--brand-glow': item.glow 
-                  } as React.CSSProperties}
-                >
-                  <div className={styles.cardHeader}>
-                    <div className={styles.logoContainer}>
-                      {item.icon}
-                    </div>
-                    <h4 className={styles.techName}>{item.name}</h4>
-                  </div>
-                  <p className={styles.techDesc}>{item.desc}</p>
-                </div>
+                <TechCard key={itemIdx} item={item} />
               ))}
             </div>
           </div>
