@@ -1,0 +1,119 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-accent);
+  box-shadow: 0 20px 38px hsla(var(--bg-primary), 0.95), 0 0 28px var(--card-glow);
+}
+
+.cardLeft {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: hsl(var(--bg-secondary));
+  border: 1px solid hsl(var(--border-color));
+  color: var(--card-accent);
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.card:hover .iconContainer {
+  border-color: var(--card-accent);
+  background: var(--card-glow);
+}
+
+.academicIcon {
+  display: block;
+}
+
+.cardRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.degreeTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+}
+
+.gradeBadge {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  background: var(--card-glow);
+  border: 1px solid var(--card-accent);
+  color: var(--card-accent);
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.institutionName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: hsl(var(--text-secondary));
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: hsl(var(--text-muted));
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

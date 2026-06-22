@@ -232,7 +232,13 @@ const TechStack: React.FC = () => {
   return (
     <section id="techstack" className="section">
       <div className="container">
-        <h2 className="section-title">Tech Stack</h2>
+        <div className="section-header">
+          <span className="section-subtitle">Skills</span>
+          <h2 className="section-title">Tech <span className="pink-text">Stack</span></h2>
+          <p className="section-description">
+            The tools and modern web technologies I specialize in to build scalable web applications.
+          </p>
+        </div>
         {categories.map((cat, idx) => (
           <div key={idx} className={styles.categoryBlock}>
             <div className={styles.categoryHeaderMain}>

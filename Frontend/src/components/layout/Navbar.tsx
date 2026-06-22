@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
         setScrolled(false);
       }
 
-      const sections = ['home', 'about', 'projects', 'experience', 'contact'];
+      const sections = [ 'about', 'projects', 'experience', 'contact'];
       const scrollPosition = window.scrollY + 120;
 
       for (const section of sections) {
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
+    // { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
@@ -88,13 +88,13 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.navContainer}>
-        <a href="#home" className={styles.logo} onClick={(e) => handleNavClick(e, 'home')}>
+        {/* <a href="#home" className={styles.logo} onClick={(e) => handleNavClick(e, 'home')}>
           <Terminal className={styles.logoIcon} size={22} />
           <span className={styles.typingField}>
             {logoText.substring(0, logoSubIndex)}
             <span className={`${styles.cursor} ${logoBlink ? styles.visible : ''}`}>_</span>
           </span>
-        </a>
+        </a> */}
 
         <div className={styles.desktopNav}>
           {navLinks.map((link) => (

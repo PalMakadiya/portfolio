@@ -5,6 +5,7 @@ import projectRoutes from './routes/project.routes';
 import skillRoutes from './routes/skill.routes';
 import contactRoutes from './routes/contact.routes';
 import { errorHandler } from './middleware/error.middleware';
+import { getExperiences } from './controllers/skill.controller';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/skills', skillRoutes); // handles skills & timeline under /api/skills/experience
+app.get('/api/experience', getExperiences);
 app.use('/api/contact', contactRoutes);
 
 // Health check

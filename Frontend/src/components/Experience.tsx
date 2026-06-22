@@ -13,7 +13,13 @@ const Experience: React.FC<ExperienceProps> = ({ experiences, loading }) => {
   return (
     <section id="experience" className="section">
       <div className="container">
-        <h2 className="section-title">Timeline</h2>
+        <div className="section-header">
+          <span className="section-subtitle">Journey</span>
+          <h2 className="section-title">Work <span className="pink-text">Experience</span></h2>
+          <p className="section-description">
+            My history in software engineering, including internships, work roles, and key contributions.
+          </p>
+        </div>
 
         {loading ? (
           <div className={styles.timelineSkeleton}>

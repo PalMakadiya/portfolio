@@ -48,9 +48,9 @@
 }
 
 .projectRow:hover {
-  transform: translateY(-3px);
-  border-color: hsla(var(--accent-primary), 0.35);
-  box-shadow: 0 12px 30px hsla(var(--bg-primary), 0.8), 0 0 20px hsla(var(--accent-primary), 0.04);
+  transform: translateY(-8px);
+  border-color: var(--hover-color);
+  box-shadow: 0 20px 38px hsla(var(--bg-primary), 0.95), 0 0 28px var(--hover-glow);
 }
 
 .projectLeft {
@@ -76,9 +76,28 @@
 }
 
 .projectRow:hover .folderIconContainer {
-  color: hsl(var(--accent-primary));
-  border-color: hsl(var(--accent-primary) / 0.3);
-  background: hsl(var(--accent-primary) / 0.05);
+  border-color: var(--hover-color);
+  background: var(--hover-glow);
+}
+
+.indexIconColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.projectEmoji {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.projectIndex {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .projectDetails {
@@ -127,8 +146,9 @@
 }
 
 .tag {
-  background: hsl(var(--bg-tertiary));
-  color: hsl(var(--text-muted));
+  background: var(--tag-bg, hsl(var(--bg-tertiary)));
+  color: var(--tag-color, hsl(var(--text-muted)));
+  border: 1px solid var(--tag-border, hsl(var(--border-color) / 0.5));
   font-size: 0.75rem;
   font-family: var(--font-mono);
   font-weight: 500;

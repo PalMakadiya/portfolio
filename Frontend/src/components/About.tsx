@@ -7,7 +7,13 @@ const About: React.FC = () => {
   return (
     <section id="about" className="section">
       <div className="container">
-        <h2 className="section-title">About Me</h2>
+        <div className="section-header">
+          <span className="section-subtitle">About</span>
+          <h2 className="section-title">About <span className="pink-text">Me</span></h2>
+          <p className="section-description">
+            A brief insight into my development philosophy, values, and experience.
+          </p>
+        </div>
 
         <div className={styles.grid}>
           {/* Bio block */}

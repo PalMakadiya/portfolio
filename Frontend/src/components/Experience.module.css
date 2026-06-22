@@ -1,7 +1,6 @@
 .timeline {
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
   padding: 1rem 0;
 }
 
@@ -55,19 +54,22 @@
 }
 
 .timelineItem:hover .markerCircle {
-  border-color: hsl(var(--accent-primary));
-  color: hsl(var(--accent-primary));
-  box-shadow: 0 0 15px hsla(var(--accent-primary), 0.2);
+  border-color: hsl(var(--accent-secondary));
+  color: hsl(var(--accent-secondary));
+  box-shadow: 0 0 15px hsla(var(--accent-secondary), 0.2);
   transform: scale(1.1);
 }
 
 .timelineContent {
   padding: 2rem;
   border-radius: 16px;
+  transition: var(--transition-smooth);
 }
 
 .timelineContent:hover {
-  border-color: hsla(var(--accent-secondary), 0.3);
+  transform: translateY(-5px);
+  border-color: hsl(var(--accent-secondary));
+  box-shadow: 0 12px 30px hsla(var(--bg-primary), 0.8), 0 0 20px hsla(var(--accent-secondary), 0.15);
 }
 
 .timelineHeader {
@@ -153,8 +155,7 @@
 
 /* Skeletons */
 .timelineSkeleton {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .skeletonItem {

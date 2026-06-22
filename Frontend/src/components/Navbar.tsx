@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
       }
 
       // Active section highlight logic
-      const sections = ['home', 'about', 'techstack', 'projects', 'experience', 'contact'];
+      const sections = ['home', 'about', 'techstack', 'projects', 'experience', 'academic', 'contact'];
       const scrollPosition = window.scrollY + 120;
 
       for (const section of sections) {
@@ -68,11 +68,11 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'techstack', label: 'Tech Stack' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
+    { id: 'academic', label: 'Education' },
     { id: 'contact', label: 'Contact' },
   ];
 
