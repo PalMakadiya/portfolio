@@ -37,13 +37,13 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-              <a href="https://www.linkedin.com/in/palmakadiya-421331340" target="_blank" rel="noopener noreferrer" className={`${styles.infoItem} glass-panel`}>
+              <a href="https://www.linkedin.com/in/pal-makadiya-421331340" target="_blank" rel="noopener noreferrer" className={`${styles.infoItem} glass-panel`}>
                 <div className={styles.infoIcon}>
                   <Linkedin size={20} />
                 </div>
                 <div>
                   <h4>LinkedIn</h4>
-                  <span className={styles.infoLink}>palmakadiya-421331340</span>
+                  <span className={styles.infoLink}>pal-makadiya-421331340</span>
                 </div>
               </a>
             </div>
