@@ -137,7 +137,7 @@
 .bulletItem {
   position: relative;
   padding-left: 1.25rem;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: hsl(var(--text-secondary));
   line-height: 1.5;
 }

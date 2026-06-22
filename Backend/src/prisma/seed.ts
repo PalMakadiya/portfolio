@@ -56,7 +56,7 @@ async function main() {
   const projects = [
     {
       title: 'Car Management System',
-      description: 'Developed a full stack automotive management platform for car listings, insurance services, order processing, inspections, and delivery tracking operations.\n- Built responsive interfaces using Flutter and React.js for customers, sellers, service providers, delivery personnel, and administrators with role-based access control.\n- Designed scalable backend APIs using Node.js and Express.js for authentication, secure transactions, real-time order tracking, and advanced car search functionality.\n- Managed secure PostgreSQL database architecture using Prisma ORM with shipping/custom price estimation and transaction management.',
+      description: '- Developed a full-stack automotive management platform using Flutter, React.js, Node.js, Express.js, Prisma ORM, and PostgreSQL.\n- Implemented role-based access control, secure authentication, order tracking, and advanced car search features.\n- Designed scalable APIs and optimized database architecture for transactions and price estimation.',
       imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1000&auto=format&fit=crop',
       githubUrl: 'https://github.com/PalMakadiya/',
       liveUrl: 'https://github.com/PalMakadiya/',
@@ -66,13 +66,23 @@ async function main() {
     },
     {
       title: 'Automotive Marketplace Platform',
-      description: 'Developed and maintained a production-ready marketplace platform with product management, cart handling, blogs, purchases, and user management features.\n- Built responsive frontend interfaces using React.js and Material UI while developing scalable RESTful APIs using Node.js and Express.js.\n- Managed secure PostgreSQL database architecture using Prisma ORM with optimized performance and smooth user experience.\n- Focused on scalable backend architecture, workflow optimization, and efficient order and payment handling.',
+      description: '- Developed a production-ready marketplace application with React.js, Node.js, Express.js, Prisma ORM, and PostgreSQL.\n- Implemented product management, shopping cart, order processing, and user authentication features.\n- Designed scalable APIs and optimized PostgreSQL database operations.',
       imageUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1000&auto=format&fit=crop',
       githubUrl: 'https://github.com/PalMakadiya/',
       liveUrl: 'https://github.com/PalMakadiya/',
       tags: ['React.js', 'Node.js', 'Express.js', 'Prisma ORM', 'PostgreSQL', 'Material UI'],
       featured: true,
       order: 2,
+    },
+    {
+      title: 'Foody Crave',
+      description: '- Developed a full-stack food delivery application using MongoDB, Express.js, React.js, and Node.js.\n- Implemented secure user login, signup, shopping cart, and order processing functionalities.\n- Designed an administrative panel for order tracking, menu customization, and user management.',
+      imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1000&auto=format&fit=crop',
+      githubUrl: 'https://github.com/PalMakadiya/',
+      liveUrl: 'https://github.com/PalMakadiya/',
+      tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+      featured: true,
+      order: 3,
     },
   ];
 

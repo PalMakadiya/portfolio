@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import TechStack from './components/TechStack';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
@@ -65,6 +66,7 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <About />
+        <TechStack />
         <Projects projects={projects} loading={loading.projects} />
         <Experience experiences={experiences} loading={loading.experiences} />
         <Contact apiBaseUrl={API_BASE_URL} />

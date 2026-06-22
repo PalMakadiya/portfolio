@@ -115,7 +115,7 @@
 
 .projectDescription {
   color: hsl(var(--text-secondary));
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   line-height: 1.6;
   white-space: pre-line;
 }
