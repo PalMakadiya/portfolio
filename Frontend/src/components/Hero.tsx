@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Hero.module.css';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Download } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const handleCtaClick = (id: string) => {
@@ -38,9 +38,13 @@ const Hero: React.FC = () => {
             <button onClick={() => handleCtaClick('projects')} className="btn btn-primary">
               View Projects <ArrowRight size={18} />
             </button>
-            <button onClick={() => handleCtaClick('contact')} className="btn btn-secondary">
-              Get In Touch <Mail size={18} />
-            </button>
+            <a 
+              href="/resume.pdf" 
+              download="Pal_Makadiya_Resume.pdf" 
+              className="btn btn-secondary"
+            >
+              Download Resume <Download size={18} />
+            </a>
           </div>
 
           <div className={styles.socials}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, Download } from 'lucide-react';
 import HeroSocials from './HeroSocials';
 import HeroStats from './HeroStats';
 
@@ -73,9 +73,13 @@ const Hero: React.FC = () => {
           <button onClick={() => handleCtaClick('projects')} className="btn btn-primary">
             View Projects <ArrowRight size={18} />
           </button>
-          <button onClick={() => handleCtaClick('contact')} className="btn btn-secondary">
-            Get In Touch <Mail size={18} />
-          </button>
+          <a 
+            href="/resume.pdf" 
+            download="Pal_Makadiya_Resume.pdf" 
+            className="btn btn-secondary"
+          >
+            Download Resume <Download size={18} />
+          </a>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
