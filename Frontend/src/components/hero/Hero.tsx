@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
-import { ArrowRight, Mail, Download } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import HeroSocials from './HeroSocials';
 import HeroStats from './HeroStats';
 
