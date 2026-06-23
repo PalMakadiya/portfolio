@@ -217,10 +217,14 @@
   }
   .ctaGroup {
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    gap: 1rem;
   }
-  .ctaGroup button {
+  .ctaGroup button,
+  .ctaGroup a {
     justify-content: center;
+    width: fit-content;
   }
   .socials {
     justify-content: center;
