@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
             View Projects <ArrowRight size={18} />
           </button>
           <a 
-            href="/resume.pdf" 
+            href="/Pal_Makadiya_Resume.pdf" 
             download="Pal_Makadiya_Resume.pdf" 
             className="btn btn-secondary"
           >
